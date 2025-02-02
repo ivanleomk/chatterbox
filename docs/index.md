@@ -174,3 +174,51 @@ conversations: list[Conversation] = Conversation.from_claude_conversation_dump(
 )
 run(kura.cluster_conversations(conversations))
 ```
+
+## Installing Locally  
+
+If you're forking and cloning the repository to run it in a development environment, follow these steps to install and set up the project.  
+
+### Clone the Repository  
+
+```bash
+git clone https://github.com/your-org/your-repo.git
+cd your-repo
+```
+
+### Create Local Environment  
+
+=== "python venv"
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+    pip install -e .
+    ```
+
+=== "uv"
+    ```bash
+    uv sync --all-extras --dev
+    ```
+
+### Build the Web Assets  
+
+!!! warning "Build Required"  
+    The CLI depends on a frontend interface, which must be built before running the tool.  
+
+Navigate to the `ui` directory and install dependencies using your preferred package manager:  
+
+=== "npm"  
+    ```bash
+    cd ui
+    npm install
+    npm run build
+    ```  
+
+=== "bun"  
+    ```bash
+    cd ui
+    bun install
+    bun run build
+    ```  
+
+Now with everything set up, you can run the CLI and make any changes you want with your local build.
